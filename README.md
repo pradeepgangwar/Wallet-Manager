@@ -34,3 +34,7 @@ After activating virtual environment. Run following commands :
 You are good to go. Browse at *localhost:5000*.
 
 Enjoy! :+1:
+
+![Home Page](static/img/2.png)
+
+![New Month](static/img/1.png)
