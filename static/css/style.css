@@ -1,0 +1,25 @@
+#nav_div{
+	padding-left: 20px;
+}
+
+#create{
+	margin-left: 45%;
+}
+
+#entry{
+	font-size: 20px;
+	padding-left: 10px;
+}
+
+#register{
+	padding-left: 42%;
+}
+
+#chips{
+	text-align: center;
+}
+
+.cons{
+	display: block;
+    margin: 0 auto;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> New Transaction Item </title>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
+	media="screen,projection"/>
+  	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+      <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{{url_for('monthNew')}}"><i class="material-icons right">bookmark</i>New Month Here</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="{{url_for('monthNew')}}"><i class="material-icons right">bookmark</i>New Month Here</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<h2 class="center-align"> Add new Transaction for this month here </h2>
+
+<div class="row">
+	<form action="{{url_for('newTransaction', month_id = month_id)}}" method="POST">
+    	
+      <div class="row">
+      	<p class="center-align">
+      		Transaction Type: 
+		   <input class="with-gap" name="option" type="radio" id="test5" value="Debit" checked />
+		   <label for="test5">Debit</label>
+		  <input class="with-gap" name="option" type="radio" id="test5" value="Credit" checked />
+		  <label for="test5">Credit</label>
+		</p>
+        
+        <div class="input-field col s6 offset-s3">
+          <i class="material-icons prefix">account_balance_wallet</i>
+          <input id="icon_telephone" type="number" class="validate" name="price">
+          <label for="icon_telephone">Amount</label>
+        </div>
+        <div class="input-field col s6 offset-s3">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="icon_prefix2" class="materialize-textarea" name="description"></textarea>
+          <label for="icon_prefix2">Description</label>
+        </div>
+      </div>
+       	<button class="btn waves-effect waves-light" type="submit" name="submit" id="create">Submit
+    		<i class="material-icons right">send</i>
+  		</button>
+      </div>
+      </div>
+    </form>
+ </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+</body>
+</html>

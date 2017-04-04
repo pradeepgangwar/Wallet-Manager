@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> My Wallet </title>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
+	media="screen,projection"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+ <nav>
+    <div class="nav-wrapper">
+      <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{{url_for('monthNew')}}"><i class="material-icons right">bookmark</i>New Month Here</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="{{url_for('monthNew')}}"><i class="material-icons right">bookmark</i>New Month Here</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="carousel">
+    <a class="carousel-item" href="#one!"><img src="http://www.bluemaize.net/im/wallets/wallet-money-4.jpg"></a>
+    <a class="carousel-item" href="#two!"><img src="http://m3glam.com/wp-content/uploads/2016/01/money1.jpg"></a>
+    <a class="carousel-item" href="#three!"><img src="http://blog.wallstreetsurvivor.com/wp-content/uploads/photodune-12852046-manage-your-money-xs.jpg"></a>
+    <a class="carousel-item" href="#four!"><img src="http://globalaccessibilitymap.com/wp-content/uploads/2014/11/How-You-Manage-Money-More-Efficiently.jpg"></a>
+  </div>
+
+<h2 class="center-align"> Click a month for its detalis </h2>
+
+{% for i in months %}
+
+  <ul class="collection">
+    <li class="collection-item avatar">
+      <img src="../static/img/month.png" alt="" class="circle">
+      <span class="title"><a href="{{url_for('transactions', month_id = i.id )}}"> {{i.name}} {{i.year}}</a></span>
+      <p> Your openning balance for this month was Rs. <b>{{i.open_bal}}</b><br>
+      Your Current balance for this month is Rs.<b> {{i.curr_bal}} </b></p>
+      <a href="{{url_for('monthDelete', month_id = i.id)}}" class="secondary-content"><i class="material-icons" style="margin-right: 40px;">delete_forever</i></a>
+      <a href="{{url_for('monthEdit', month_id = i.id)}}" class="secondary-content"><i class="material-icons">border_color</i></a>
+    </li>
+  </ul>
+
+{%endfor%}
+
+<br>
+<br>
+<br>
+
+<!--Footer-->
+<footer class="page-footer" id="footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Wallet Manager</h5>
+                <p class="grey-text text-lighten-4">Use it to your needs and contribute by raising issues and sending PRs</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Contact </h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="http://github.com/pradeepgangwar">Github</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pradeep.gangwar.391">Facebook</a>  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © Pradeep All Rights Reserved
+            <a class="grey-text text-lighten-4 right" href="http://github.com/pradeepgangwar/Wallet-Manager">GitHub Link</a>
+            </div>
+          </div>
+        </footer>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+
+</body>
+</html>

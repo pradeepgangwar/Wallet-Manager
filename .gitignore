@@ -1,0 +1,3 @@
+venv/
+database_setup.pyc
+mywallet.db
