@@ -30,7 +30,7 @@
     <a class="carousel-item" href="#four!"><img src="http://globalaccessibilitymap.com/wp-content/uploads/2014/11/How-You-Manage-Money-More-Efficiently.jpg"></a>
   </div>
 
-<h2 class="center-align"> Click a month for its detalis </h2>
+<h2 class="center-align"> Click a month for its details </h2>
 
 {% for i in months %}
 
@@ -38,7 +38,7 @@
     <li class="collection-item avatar">
       <img src="../static/img/month.png" alt="" class="circle">
       <span class="title"><a href="{{url_for('transactions', month_id = i.id )}}"> {{i.name}} {{i.year}}</a></span>
-      <p> Your openning balance for this month was Rs. <b>{{i.open_bal}}</b><br>
+      <p> Your opening balance for this month was Rs. <b>{{i.open_bal}}</b><br>
       Your Current balance for this month is Rs.<b> {{i.curr_bal}} </b></p>
       <a href="{{url_for('monthDelete', month_id = i.id)}}" class="secondary-content"><i class="material-icons" style="margin-right: 40px;">delete_forever</i></a>
       <a href="{{url_for('monthEdit', month_id = i.id)}}" class="secondary-content"><i class="material-icons">border_color</i></a>
