@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Month, Transactions
@@ -10,6 +10,14 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
+
+
+# JSON return function for APIs
+@app.route('/month/<int:month_id>/data/JSON')
+def monthTransctionJSON(month_id):
+    month = session.query(Month).filter_by(id=month_id).one()
+    items = session.query(Transactions).filter_by(month_id=month_id).all()
+    return jsonify(Transactions=[i.serialize for i in items])
 
 
 # Home page of Site

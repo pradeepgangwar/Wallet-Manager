@@ -26,6 +26,16 @@ class Transactions(Base):
 	month_id = Column(Integer, ForeignKey('month.id'))
 	month = relationship(Month)
 
+	@property
+	def serialize(self):
+
+		return {
+			'name': self.name,
+			'id' : self.id,
+			'description': self.description,
+			'amount': self.cost,
+		}
+
 engine = create_engine(
 	'sqlite:///mywallet.db')
 
