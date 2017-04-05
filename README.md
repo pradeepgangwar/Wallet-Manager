@@ -6,7 +6,7 @@
 
 #### **Visit** [My Wallet](http://pradeep39.pythonanywhere.com) **for live demo**
 
-- Hosthing Credits = PythonAnywhere
+- Hosting Credits = PythonAnywhere
 - DataBase = SQL
 - Framework = Flask
 
