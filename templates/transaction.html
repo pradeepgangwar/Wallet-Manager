@@ -7,6 +7,7 @@
   media="screen,projection"/>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 </head>
 <body>
 
@@ -28,6 +29,7 @@
 <div id="register">
 <a href="{{url_for('newTransaction', month_id = month.id)}}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a> <span id="entry" class="hide-on-med-and-down">Create New Entry</span>
 </div>
+
 <br>
 <div class="row" id="chips">
   <div class="chip">
