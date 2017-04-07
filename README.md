@@ -4,9 +4,9 @@
 
 #### Site is currently in **Beta Version** hence some functionality are not functional.
 
-#### **Visit** [My Wallet](http://pradeep39.pythonanywhere.com) **for live demo**
+#### **Visit** [My Wallet](https://goo.gl/jiF0j5) **for live demo**
 
-- Hosting Credits = PythonAnywhere
+- Hosting Credits = Heroku
 - DataBase = SQL
 - Framework = Flask
 
