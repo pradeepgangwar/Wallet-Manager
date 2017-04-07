@@ -4,9 +4,9 @@
 
 #### Site is currently in **Beta Version** hence some functionality are not functional.
 
-#### **Visit** [My Wallet](https://goo.gl/jiF0j5) **for live demo**
+#### **Visit** [My Wallet](https://goo.gl/2GCgwI) **for live demo**
 
-- Hosting Credits = Heroku
+- Hosting Credits = PythonAnyWhere
 - DataBase = SQL
 - Framework = Flask
 
