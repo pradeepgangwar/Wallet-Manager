@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Menu </title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title> Menu </title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
   media="screen,projection"/>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
@@ -90,7 +90,7 @@
             <p> {{ i.description }}<br>
             Rs. {{i.cost}} </p>
             <a href="{{url_for('deleteTransaction', month_id = month.id, transactions_id = i.id)}}" class="secondary-content"><i class="material-icons" style="margin-right: 40px;">delete_forever</i></a>
-            <a href="{{url_for('deleteTransaction', month_id = month.id, transactions_id = i.id)}}" class="secondary-content"><i class="material-icons">border_color</i></a>
+            <a href="{{url_for('transactionEdit', month_id = month.id, transactions_id = i.id)}}" class="secondary-content"><i class="material-icons">border_color</i></a>
           </li>
         </ul>
 

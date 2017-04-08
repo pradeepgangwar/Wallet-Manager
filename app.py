@@ -49,8 +49,11 @@ def monthNew():
 @app.route('/month/<int:month_id>/delete', methods = ['POST', 'GET'])
 def monthDelete(month_id):
     deleteMonth = session.query(Month).filter_by(id = month_id).one()
+    deleteTransaction = session.query(Transactions).filter_by(month_id = month_id).all()
     if request.method == 'POST':
         session.delete(deleteMonth)
+        for i in deleteTransaction:
+            session.delete(i)
         session.commit()
         return redirect(url_for('wallet'))
     else:
@@ -119,20 +122,52 @@ def deleteTransaction(month_id, transactions_id):
 @app.route('/month/<int:month_id>/<int:transactions_id>/edit/', methods = ['POST', 'GET'])
 def transactionEdit(month_id, transactions_id):
     editTransaction = session.query(Transactions).filter_by(id = transactions_id).one()
-    return render_template('transactionEdit.html', month_id = month_id,transactions_id = transactions_id, i= editTransaction)
-
-'''@app.route('/restaurant/<int:restaurant_id>/<int:menu_id>/edit/', methods = ['GET' , 'POST'])
-def editMenuItem(restaurant_id, menu_id):
-    editedItem = session.query(MenuItem).filter_by(id = menu_id).one()
     if request.method == 'POST':
-        if request.form['name']:
-            editedItem.name = request.form['name']
-        session.add(editedItem)
+        if editTransaction.name == 'Debit':
+            if request.form['option'] == 'Debit':
+                month = session.query(Month).filter_by(id = month_id).one()
+                editTransaction.name = request.form['option']
+                month.curr_bal += int(editTransaction.cost)
+                month.curr_bal -= int(request.form['price'])
+                month.debits -= int(editTransaction.cost)
+                month.debits += int(request.form['price'])
+                editTransaction.cost = int(request.form['price'])
+                editTransaction.description = request.form['description']
+            if request.form['option'] == 'Credit':
+                month = session.query(Month).filter_by(id = month_id).one()
+                editTransaction.name = request.form['option']
+                month.curr_bal += int(editTransaction.cost)
+                month.curr_bal += int(request.form['price'])
+                month.debits -= int(editTransaction.cost)
+                month.credits += int(request.form['price'])
+                editTransaction.cost = request.form['price']
+                editTransaction.description = request.form['description']
+        if editTransaction.name == 'Credit':
+            if request.form['option'] == 'Debit':
+                month = session.query(Month).filter_by(id = month_id).one()
+                editTransaction.name = request.form['option']
+                month.curr_bal -= int(editTransaction.cost)
+                month.curr_bal -= int(request.form['price'])
+                month.credits -= int(editTransaction.cost)
+                month.debits += int(request.form['price'])
+                editTransaction.cost = int(request.form['price'])
+                editTransaction.description = request.form['description']
+            if request.form['option'] == 'Credit':
+                month = session.query(Month).filter_by(id = month_id).one()
+                editTransaction.name = request.form['option']
+                month.curr_bal -= int(editTransaction.cost)
+                month.curr_bal += int(request.form['price'])
+                month.credits -= int(editTransaction.cost)
+                month.credits += int(request.form['price'])
+                editTransaction.cost = request.form['price']
+                editTransaction.description = request.form['description']
+        session.add(editTransaction)
         session.commit()
-        return redirect(url_for('restaurantMenu', restaurant_id = restaurant_id))
-    else:
-        return render_template('editMenuItem.html', restaurant_id = restaurant_id, menu_id = menu_id, i = editedItem)
-'''
+        return redirect(url_for('transactions', month_id = month_id))
+    else: 
+        return render_template('transactionEdit.html', month_id = month_id,transactions_id = transactions_id, i= editTransaction)
+
+
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True
