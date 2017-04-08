@@ -6,6 +6,14 @@
 	margin-left: 45%;
 }
 
+#create1{
+	margin-left: 40%;
+}
+
+#icon-signin{
+	font-size: 48px;
+}
+
 #entry{
 	font-size: 20px;
 	padding-left: 10px;
@@ -22,4 +30,18 @@
 .cons{
 	display: block;
     margin: 0 auto;
+}
+
+#modal1{
+	color: black;
+}
+
+#login_button{
+	float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#login_button2{
+    margin-left: 40%;
 }

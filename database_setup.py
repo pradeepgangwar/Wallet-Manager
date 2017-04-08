@@ -1,10 +1,16 @@
-import sys
+import sys,os
 from sqlalchemy import Column ,ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 
 Base = declarative_base()
+
+'''class User(Base):
+	__tablename__ = 'user'
+	id = Column(String, primary_key = True)
+	username = Column(String(250), nullable = False)
+	password = '''
 
 class Month(Base):
 	__tablename__ = 'month'
@@ -36,7 +42,6 @@ class Transactions(Base):
 			'amount': self.cost,
 		}
 
-engine = create_engine(
-	'sqlite:///mywallet.db')
+engine = create_engine('sqlite:///mywallet.db')
 
 Base.metadata.create_all(engine)

@@ -5,6 +5,7 @@ from database_setup import Base, Month, Transactions
 
 app = Flask(__name__)
 
+
 engine = create_engine('sqlite:///mywallet.db')
 Base.metadata.bind = engine
 
@@ -24,6 +25,11 @@ def monthTransctionJSON(month_id):
 @app.route('/')
 @app.route('/wallet')
 def wallet():
+    return render_template('index.html')
+
+#Home page of User
+@app.route('/home')
+def home():
     months = session.query(Month).all()
     return render_template('Home.html', months = months)
 

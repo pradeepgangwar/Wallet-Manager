@@ -1,15 +1,16 @@
 # This is a basic Wallet Manager type application
 
-### This application uses Python based FLASK framework for its backend and SQL for database.
+### This application uses Python based FLASK framework for its backend and SQLite for database.
 
 #### Site is currently in **Beta Version** hence some functionality are not functional.
 
-#### **Visit** [My Wallet](https://goo.gl/2GCgwI) **for live demo**
+#### **Visit** [My Wallet](pocketmanager.herokuapp.com/home) **for live demo**
 
-- Hosting Credits = PythonAnyWhere
+- Hosting Credits = Heroku
 - DataBase = SQL
 - Framework = Flask
 
+Some heroku config files have not been added for security. But this repo is ready to clone for local development purpose.
 ___
 
 To Get this application running on your local machine
