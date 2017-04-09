@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> My Wallet </title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
+	media="screen,projection"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+ <nav>
+    <div class="nav-wrapper">
+      <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
+      <!-- Modal Trigger -->
+      <a class="modal-trigger waves-effect waves-light btn hide-on-med-and-down" href="#modal1" id="login_button">Login/Signup</a>
+</nav>
+
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4 class="center-align">Login/ Signup</h4>
+
+          <div class="row">
+              <form action="" method="POST">
+                  
+                  <div class="row">
+                    
+                    <div class="center-align">
+                      <i class="material-icons" id="icon-signin">account_circle</i>
+                    </div>
+                    <div class="input-field col s6 offset-s3">
+                      <input id="icon_telephone" type="text" class="validate" name="price" required>
+                      <label for="icon_telephone">Username</label>
+                    </div>
+                    <div class="input-field col s6 offset-s3">
+                      <input id="icon_prefix2" type="password" class="validate" name="price" required>
+                      <label for="icon_prefix2">Password</label>
+                    </div>
+                  </div>
+                    <button class="btn waves-effect waves-light" type="submit" name="submit" id="create1">Submit
+                    <i class="material-icons right">send</i>
+                  </button>
+        
+              </form>
+          </div>
+
+          <p class="center-align"> Dont have an account?<a href=""> Sign Up </a></p>
+
+      </div>
+    </div>
+
+  <div class="carousel">
+    <a class="carousel-item" href="#one!"><img src="http://www.bluemaize.net/im/wallets/wallet-money-4.jpg"></a>
+    <a class="carousel-item" href="#two!"><img src="http://m3glam.com/wp-content/uploads/2016/01/money1.jpg"></a>
+    <a class="carousel-item" href="#three!"><img src="http://blog.wallstreetsurvivor.com/wp-content/uploads/photodune-12852046-manage-your-money-xs.jpg"></a>
+    <a class="carousel-item" href="#four!"><img src="http://globalaccessibilitymap.com/wp-content/uploads/2014/11/How-You-Manage-Money-More-Efficiently.jpg"></a>
+  </div>
+
+  <a class="modal-trigger waves-effect waves-light btn hide-on-large-only" href="#modal1" id="login_button2">Login/Signup</a>
+
+<h3 class="center-align"> Wallet Manager </h3>
+
+
+<br>
+<br>
+<br>
+
+<!--Footer-->
+<footer class="page-footer" id="footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Wallet Manager</h5>
+                <p class="grey-text text-lighten-4">Use it to your needs and contribute by raising issues and sending PRs</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Contact </h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="http://github.com/pradeepgangwar">Github</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pradeep.gangwar.391">Facebook</a>  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © Pradeep All Rights Reserved
+            <a class="grey-text text-lighten-4 right" href="http://github.com/pradeepgangwar/Wallet-Manager">GitHub Link</a>
+            </div>
+          </div>
+        </footer>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+
+</body>
+</html>
