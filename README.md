@@ -4,13 +4,16 @@
 
 #### Site is currently in **Beta Version** hence some functionality are not functional.
 
-#### **Visit** [My Wallet](pocketmanager.herokuapp.com/home) **for live demo**
+#### **Visit** [My Wallet](https://pocketmanager.herokuapp.com/home) **for live demo**
 
 - Hosting Credits = Heroku
 - DataBase = SQL
 - Framework = Flask
 
 Some heroku config files have not been added for security. But this repo is ready to clone for local development purpose.
+___
+
+### Updates Pending : Login/SignUp, UI improvement, User interactive sessions.
 ___
 
 To Get this application running on your local machine
