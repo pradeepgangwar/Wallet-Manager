@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Month, Transactions
+from flask_sqlalchemy import SQLAlchemy
+from database_setup import Base, User, Month, Transactions
 
 app = Flask(__name__)
 
-
 engine = create_engine('sqlite:///mywallet.db')
+
+
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -41,7 +43,7 @@ def monthNew():
             curr_bal = request.form['balance'],credits = 0, debits = 0, transactions = 0)
         session.add(newData)
         session.commit()
-        return redirect(url_for('wallet'))
+        return redirect(url_for('home'))
     else:
         return render_template('newMonth.html')
 
@@ -49,13 +51,10 @@ def monthNew():
 @app.route('/month/<int:month_id>/delete', methods = ['POST', 'GET'])
 def monthDelete(month_id):
     deleteMonth = session.query(Month).filter_by(id = month_id).one()
-    deleteTransaction = session.query(Transactions).filter_by(month_id = month_id).all()
     if request.method == 'POST':
         session.delete(deleteMonth)
-        for i in deleteTransaction:
-            session.delete(i)
         session.commit()
-        return redirect(url_for('wallet'))
+        return redirect(url_for('home'))
     else:
         return render_template('deleteMonth.html', month_id = month_id, i = deleteMonth)
 
@@ -166,6 +165,7 @@ def transactionEdit(month_id, transactions_id):
         return redirect(url_for('transactions', month_id = month_id))
     else: 
         return render_template('transactionEdit.html', month_id = month_id,transactions_id = transactions_id, i= editTransaction)
+
 
 
 if __name__ == '__main__':

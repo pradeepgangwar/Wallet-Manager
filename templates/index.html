@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> My Wallet </title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
-	media="screen,projection"/>
+  <title> My Wallet </title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
+  media="screen,projection"/>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 
@@ -16,6 +16,12 @@
       <!-- Modal Trigger -->
       <a class="modal-trigger waves-effect waves-light btn hide-on-med-and-down" href="#modal1" id="login_button">Login/Signup</a>
 </nav>
+      
+       {% if error %}
+        <div class="card-panel center-align" id= "error">
+          <span class="red-text text-ligthen-2">{{error}}</span>
+        </div>
+      {% endif %}
 
       <!-- Modal Structure -->
       <div id="modal1" class="modal modal-fixed-footer">
@@ -23,19 +29,20 @@
           <h4 class="center-align">Login/ Signup</h4>
 
           <div class="row">
-              <form action="" method="POST">
+              <form action="{{url_for('wallet')}}" method="POST">
                   
                   <div class="row">
                     
                     <div class="center-align">
                       <i class="material-icons" id="icon-signin">account_circle</i>
                     </div>
+                   
                     <div class="input-field col s6 offset-s3">
-                      <input id="icon_telephone" type="text" class="validate" name="price" required>
+                      <input id="icon_telephone" type="text" class="validate" name="username" required>
                       <label for="icon_telephone">Username</label>
                     </div>
                     <div class="input-field col s6 offset-s3">
-                      <input id="icon_prefix2" type="password" class="validate" name="price" required>
+                      <input id="icon_prefix2" type="password" class="validate" name="password" required>
                       <label for="icon_prefix2">Password</label>
                     </div>
                   </div>
@@ -95,6 +102,11 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js')}}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}"></script>
+<script type="text/javascript"> 
+            $(document).ready( function() {
+              $('#error').delay(5000).fadeOut();
+            });
+          </script>
 
 
 </body>

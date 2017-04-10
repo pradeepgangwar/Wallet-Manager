@@ -6,11 +6,12 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
-'''class User(Base):
+class User(Base):
 	__tablename__ = 'user'
-	id = Column(String, primary_key = True)
+	id = Column(Integer, primary_key = True)
 	username = Column(String(250), nullable = False)
-	password = '''
+	password = (Column(String(250),nullable = False))
+	email = Column(String(250),nullable = False)
 
 class Month(Base):
 	__tablename__ = 'month'
@@ -22,7 +23,9 @@ class Month(Base):
 	credits = Column(Integer, nullable = False)
 	transactions = Column(Integer, nullable = False)
 	year = Column(String(250), nullable = False)
-
+	user_id = Column(Integer, ForeignKey('user.id'))
+	user = relationship(User)
+	
 class Transactions(Base):
 	__tablename__ = 'transactions'
 	name = Column(String(250), nullable = False)
