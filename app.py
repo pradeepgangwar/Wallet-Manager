@@ -51,7 +51,11 @@ def monthNew():
 @app.route('/month/<int:month_id>/delete', methods = ['POST', 'GET'])
 def monthDelete(month_id):
     deleteMonth = session.query(Month).filter_by(id = month_id).one()
+    deleteTransaction = session.query(Transactions).filter_by(month_id = month_id)
     if request.method == 'POST':
+        for i in deleteTransaction:
+            session.delete(i)
+            session.commit()
         session.delete(deleteMonth)
         session.commit()
         return redirect(url_for('home'))
