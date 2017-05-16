@@ -3,8 +3,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from flask_sqlalchemy import SQLAlchemy
 from database_setup import Base, User, Month, Transactions
+from flask_bcrypt import Bcrypt
+from sqlalchemy.sql import exists
+from forms import SignupForm, LoginForm
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 engine = create_engine('sqlite:///mywallet.db')
 
@@ -22,18 +26,45 @@ def monthTransctionJSON(month_id):
     items = session.query(Transactions).filter_by(month_id=month_id).all()
     return jsonify(Transactions=[i.serialize for i in items])
 
-
 # Home page of Site
-@app.route('/')
-@app.route('/wallet')
+@app.route('/', methods = ['POST', 'GET'])
+@app.route('/wallet', methods = ['POST', 'GET'])
 def wallet():
-    return render_template('index.html')
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'pradeep' or request.form['password'] != 'pradeep':
+            error = 'Invalid Credentials ! Try Again'
+        else:
+            return redirect(url_for('home'))
+    return render_template('index.html', error = error)
 
 #Home page of User
 @app.route('/home')
 def home():
     months = session.query(Month).all()
     return render_template('Home.html', months = months)
+
+#Signup page of User
+@app.route('/signup', methods = ['POST', 'GET'])
+def signup():
+    error  = None
+    form  = SignupForm(request.form)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            username = request.form['username']
+            user = session.query(exists().where(User.username == username)).scalar()
+            if (user == False):
+                newUser = User(username = request.form['username'], password = bcrypt.generate_password_hash(request.form['password']),
+                     email = request.form['email'])
+                session.add(newUser)
+                session.commit()
+                error = 'User created successfully.'
+            else:
+                error = 'Username already taken'
+                return render_template('signup.html',form = form, error = error)
+        else:
+            return render_template('signup.html', form = form, error = error)
+    return render_template('signup.html', form = form, error = error)
 
 # Add a new month to database
 @app.route('/month/new', methods = ['POST', 'GET'])

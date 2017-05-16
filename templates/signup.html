@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
+  media="screen,projection"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+      <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{{url_for('wallet')}}"><i class="material-icons right">bookmark</i>Login</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="{{url_for('wallet')}}"><i class="material-icons right">bookmark</i>Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<h2 class="center-align">Signup Here </h2>
+
+
+{% if error %}
+    <div class="card-panel center-align error">
+      <span class="red-text text-ligthen-2">{{error}}</span>
+    </div>
+{% endif %}
+
+{% if form.errors %}
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+                <div class="center-align error offset-s4">
+                   <span class="red-text text-ligthen-2">{{ form[field_name].label }}: {{ error }}</span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+{% endif %}
+
+<div class="row">
+    <form class="col s8 offset-s2" action="{{url_for('signup')}}" method = 'POST'>
+      {{form.csrf_token}}
+      <div class="row">
+        <div class="input-field col s8 offset-s2">
+          <i class="material-icons prefix">face</i>
+          {{form.username()}}
+          {{form.username.label}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s8 offset-s2">
+          <i class="material-icons prefix">email</i>
+          {{form.email()}}
+          {{form.email.label}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s8 offset-s2">
+          <i class="material-icons prefix">fingerprint</i>
+          {{form.password()}}
+          {{form.password.label}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s8 offset-s2">
+          <i class="material-icons prefix">fingerprint</i>
+          {{form.confirm()}}
+          {{form.confirm.label}}
+        </div>
+      </div>
+
+        <button class="btn waves-effect waves-light" type="submit" name="submit" id="create">Submit
+          <i class="material-icons right">send</i>
+        </button>
+    
+    </form>
+  </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}"></script>
+<script type="text/javascript"> 
+            $(document).ready( function() {
+              $('.error').delay(6000).fadeOut();
+            });
+          </script>
+
+</body>
+</html>

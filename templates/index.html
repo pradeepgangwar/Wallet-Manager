@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> My Wallet </title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
-  media="screen,projection"/>
+	<title> My Wallet </title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
+	media="screen,projection"/>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 
@@ -26,7 +26,7 @@
       <!-- Modal Structure -->
       <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
-          <h4 class="center-align">Login/ Signup</h4>
+          <h4 class="center-align">Login</h4>
 
           <div class="row">
               <form action="{{url_for('wallet')}}" method="POST">
@@ -53,7 +53,7 @@
               </form>
           </div>
 
-          <p class="center-align"> Dont have an account?<a href=""> Sign Up </a></p>
+          <p class="center-align"> Don't have an account?<a href="{{url_for('signup')}}"> Sign Up </a></p>
 
       </div>
     </div>
