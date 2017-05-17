@@ -14,7 +14,7 @@
     <div class="nav-wrapper">
       <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
       <!-- Modal Trigger -->
-      <a class="modal-trigger waves-effect waves-light btn hide-on-med-and-down" href="#modal1" id="login_button">Login/Signup</a>
+      <a class="modal-trigger waves-effect waves-light btn hide-on-med-and-down" href="{{url_for('login')}}" id="login_button">Login/Signup</a>
 </nav>
       
        {% if error %}
@@ -23,52 +23,24 @@
         </div>
       {% endif %}
 
-      <!-- Modal Structure -->
-      <div id="modal1" class="modal modal-fixed-footer">
-        <div class="modal-content">
-          <h4 class="center-align">Login</h4>
-
-          <div class="row">
-              <form action="{{url_for('wallet')}}" method="POST">
-                  
-                  <div class="row">
-                    
-                    <div class="center-align">
-                      <i class="material-icons" id="icon-signin">account_circle</i>
-                    </div>
-                   
-                    <div class="input-field col s6 offset-s3">
-                      <input id="icon_telephone" type="text" class="validate" name="username" required>
-                      <label for="icon_telephone">Username</label>
-                    </div>
-                    <div class="input-field col s6 offset-s3">
-                      <input id="icon_prefix2" type="password" class="validate" name="password" required>
-                      <label for="icon_prefix2">Password</label>
-                    </div>
-                  </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="submit" id="create1">Submit
-                    <i class="material-icons right">send</i>
-                  </button>
-        
-              </form>
-          </div>
-
-          <p class="center-align"> Don't have an account?<a href="{{url_for('signup')}}"> Sign Up </a></p>
-
-      </div>
-    </div>
-
+      
   <div class="carousel">
     <a class="carousel-item" href="#one!"><img src="http://www.bluemaize.net/im/wallets/wallet-money-4.jpg"></a>
     <a class="carousel-item" href="#two!"><img src="http://m3glam.com/wp-content/uploads/2016/01/money1.jpg"></a>
     <a class="carousel-item" href="#three!"><img src="http://blog.wallstreetsurvivor.com/wp-content/uploads/photodune-12852046-manage-your-money-xs.jpg"></a>
     <a class="carousel-item" href="#four!"><img src="http://globalaccessibilitymap.com/wp-content/uploads/2014/11/How-You-Manage-Money-More-Efficiently.jpg"></a>
+    <a class="carousel-item" href="#four!"><img src="http://www.all-debt-consolidation.org/file/2016/01/all-debt-consolidation-1-1000x661.jpg"></a>
   </div>
 
-  <a class="modal-trigger waves-effect waves-light btn hide-on-large-only" href="#modal1" id="login_button2">Login/Signup</a>
+  <a class="modal-trigger waves-effect waves-light btn hide-on-large-only" href="{{url_for('login')}}" id="login_button2">Login/Signup</a>
+
+<hr style="width: 400px;">
 
 <h3 class="center-align"> Wallet Manager </h3>
 
+<hr style="width: 400px;">
+
+<p style="font-size: 22px; font-family: arial; margin-left: 50px; margin-right: 50px;"> Wallet manager is a simple application for managing your day to day wallet transactions. So that you keep track of your money being spend. <br> Many times it happens that at the end of month we wonder where we spent all our money and many times we are clueless. With Wallet manager you can keep month-wise track of your money. Wallet manager keeps you organized with your wallet. </p>
 
 <br>
 <br>

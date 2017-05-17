@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Delete Transaction Item</title>
+	<title>Edit Month details</title>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
-    media="screen,projection"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
+  media="screen,projection"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-
 
 <nav>
     <div class="nav-wrapper">
@@ -22,10 +20,10 @@
       <ul id='dropdown1' class='dropdown-content' style="width: 300px; top: 20px; right: 0px;" data-item-alignment="right" data-constrain-width="true" data-below-origin="true">
         <li><a href="#" class="center-align">{{current_user.email}}</a></li>
         <li class="divider"></li>
-         <li><a href="{{ url_for('updateemail')}}" class="center-align">Update Email</a></li>
-          <li class="divider"></li>
-          <li><a href="{{ url_for('updatepass')}}" class="center-align">Update Password</a></li>
-          <li class="divider"></li>
+        <li><a href="{{ url_for('updateemail')}}" class="center-align">Update Email</a></li>
+        <li class="divider"></li>
+        <li><a href="{{ url_for('updatepass')}}" class="center-align">Update Password</a></li>
+        <li class="divider"></li>
         <li><a href="{{ url_for('logout')}}" class="center-align">Logout</a></li>
       </ul>
     </div>
@@ -38,7 +36,7 @@
         <ul id='dropdown1' class='dropdown-content' style="width: 300px; top: 20px; right: 0px;" data-item-alignment="right" data-constrain-width="true" data-below-origin="true">
           <li><a href="#" class="center-align">{{current_user.email}}</a></li>
           <li class="divider"></li>
-           <li><a href="{{ url_for('updateemail')}}" class="center-align">Update Email</a></li>
+          <li><a href="{{ url_for('updateemail')}}" class="center-align">Update Email</a></li>
           <li class="divider"></li>
           <li><a href="{{ url_for('updatepass')}}" class="center-align">Update Password</a></li>
           <li class="divider"></li>
@@ -46,28 +44,14 @@
         </ul>
     </div>
 
-<h3 class="center-align">Are you sure you want to delete {{i.name}}</h3>
-<h5 class="center-align"> Which was for {{i.description}} </h5>
 
-<br>
+<img src="{{ url_for('static', filename='img/cons.jpg')}}"" height="300px" width="300px" class="cons">
 
 <div class="row">
-  <form action="{{url_for('deleteTransaction', month_id = month_id, transactions_id = i.id)}}" method = "POST">
+  <form action="{{url_for('wallet')}}">
       
       <div class="row">
-        <button class="btn waves-effect waves-light" type="submit" name="submit" id="create">Submit
-        <i class="material-icons right">send</i>
-      </button>
-      </div>
-
-    </form>
- </div>
-
- <div class="row">
-  <form action="{{url_for('transactions', month_id = month_id)}}">
-      
-      <div class="row">
-        <button class="btn waves-effect waves-light" type="submit" name="submit" id="create">Cancel
+        <button class="btn waves-effect waves-light" type="submit" name="submit" id="create">Go Back
         <i class="material-icons right">cancel</i>
       </button>
       </div>

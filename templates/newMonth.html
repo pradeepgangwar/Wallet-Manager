@@ -14,14 +14,35 @@
     <div class="nav-wrapper">
       <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="{{url_for('monthNew')}}"><i class="material-icons right">bookmark</i>New Month Here</a></li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li><a href="{{url_for('monthNew')}}"><i class="material-icons right">bookmark</i>New Month Here</a></li>
+      <a class='dropdown-button btn hide-on-small-only' href='#' id="drop" data-activates='dropdown1' data-constrainwidth="false" > {{ current_user.username }}</a>
+
+      <!-- Dropdown Structure -->
+      <ul id='dropdown1' class='dropdown-content' style="width: 300px; top: 20px; right: 0px;" data-item-alignment="right" data-constrain-width="true" data-below-origin="true">
+        <li><a href="#" class="center-align">{{current_user.email}}</a></li>
+        <li class="divider"></li>
+         <li><a href="{{ url_for('updateemail')}}" class="center-align">Update Email</a></li>
+          <li class="divider"></li>
+          <li><a href="{{ url_for('updatepass')}}" class="center-align">Update Password</a></li>
+          <li class="divider"></li>
+        <li><a href="{{ url_for('logout')}}" class="center-align">Logout</a></li>
       </ul>
     </div>
   </nav>
+
+<div class="center-align">
+    <a class='dropdown-button btn hide-on-med-and-up' href='#' id="drop" data-activates='dropdown1' data-constrainwidth="false" > {{ current_user.username }}</a>
+
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content' style="width: 300px; top: 20px; right: 0px;" data-item-alignment="right" data-constrain-width="true" data-below-origin="true">
+          <li><a href="#" class="center-align">{{current_user.email}}</a></li>
+          <li class="divider"></li>
+           <li><a href="{{ url_for('updateemail')}}" class="center-align">Update Email</a></li>
+          <li class="divider"></li>
+          <li><a href="{{ url_for('updatepass')}}" class="center-align">Update Password</a></li>
+          <li class="divider"></li>
+          <li><a href="{{ url_for('logout')}}" class="center-align">Logout</a></li>
+        </ul>
+    </div>
 
 <h2 class="center-align"> Add new Month to your wallet menu here </h2>
 

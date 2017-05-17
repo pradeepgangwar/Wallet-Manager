@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Signup</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
-  media="screen,projection"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Signup</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
+	media="screen,projection"/>
+  	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 
@@ -15,10 +15,10 @@
       <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="{{url_for('wallet')}}"><i class="material-icons right">bookmark</i>Login</a></li>
+        <li><a href="{{url_for('login')}}"><i class="material-icons right">bookmark</i>Login</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="{{url_for('wallet')}}"><i class="material-icons right">bookmark</i>Login</a></li>
+        <li><a href="{{url_for('login')}}"><i class="material-icons right">bookmark</i>Login</a></li>
       </ul>
     </div>
   </nav>
@@ -44,7 +44,7 @@
 
 <div class="row">
     <form class="col s8 offset-s2" action="{{url_for('signup')}}" method = 'POST'>
-      {{form.csrf_token}}
+    	{{form.csrf_token}}
       <div class="row">
         <div class="input-field col s8 offset-s2">
           <i class="material-icons prefix">face</i>
@@ -77,9 +77,9 @@
         </div>
       </div>
 
-        <button class="btn waves-effect waves-light" type="submit" name="submit" id="create">Submit
-          <i class="material-icons right">send</i>
-        </button>
+       	<button class="btn waves-effect waves-light" type="submit" name="submit" id="create">Submit
+    		  <i class="material-icons right">send</i>
+  		  </button>
     
     </form>
   </div>

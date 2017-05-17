@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> My Wallet </title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css')}}" 
+	media="screen,projection"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+ <nav>
+    <div class="nav-wrapper">
+      <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
+      <!-- Modal Trigger -->
+      <a class="modal-trigger waves-effect waves-light btn hide-on-med-and-down" href="#modal1" id="login_button">Login/Signup</a>
+</nav>
+      
+       {% if error %}
+        <div class="card-panel center-align error">
+          <span class="red-text text-ligthen-2">{{error}}</span>
+        </div>
+      {% endif %}
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div class="card-panel center-align error">
+          <span class="red-text text-ligthen-2">{{ message }}</span>
+        </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+      
+          <h4 class="center-align">Login/ Signup</h4>
+
+          <div class="row">
+              <form action="{{url_for('login')}}" method="POST">
+                  {{form.csrf_token}}
+                  <div class="row">
+                    
+                    <div class="center-align">
+                      <i class="material-icons" id="icon-signin">account_circle</i>
+                    </div>
+                   
+                    <div class="input-field col s6 offset-s3">
+                      {{form.username()}}
+                      {{form.username.label}}
+                    </div>
+                    <div class="input-field col s6 offset-s3">
+                      {{form.password()}}
+                      {{form.password.label}}
+                    </div>
+                  </div>
+
+                  <div class = "center-align">
+                    <button class="btn waves-effect waves-light" type="submit" name="submit">Submit
+                    <i class="material-icons right">send</i>
+                    </button>
+                  </div>
+        
+              </form>
+          </div>
+
+          <p class="center-align"> Don't have an account?<a href="{{url_for('signup')}}"> Sign Up </a></p>
+
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}"></script>
+<script type="text/javascript"> 
+            $(document).ready( function() {
+              $('.error').delay(5000).fadeOut();
+            });
+          </script>
+
+
+</body>
+</html>

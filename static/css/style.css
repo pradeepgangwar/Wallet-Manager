@@ -45,3 +45,18 @@
 #login_button2{
     margin-left: 40%;
 }
+
+.error{
+	width: 300px;
+	height: 50px;
+	margin-left: 40%;
+}
+
+#drop{
+	float: right;
+	margin: 10px 20px; 
+}
+
+#dropdown1{
+	width = 80px;
+}

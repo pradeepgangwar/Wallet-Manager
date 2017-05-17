@@ -13,24 +13,63 @@
  <nav>
     <div class="nav-wrapper">
       <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
+      <!--a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a-->
+      <!-- Dropdown Trigger -->
+      <a class='dropdown-button btn hide-on-small-only' href='#' id="drop" data-activates='dropdown1' data-constrainwidth="false" > {{ current_user.username }}</a>
+
+      <!-- Dropdown Structure -->
+      <ul id='dropdown1' class='dropdown-content' style="width: 300px; top: 20px; right: 0px;" data-item-alignment="right" data-constrain-width="true" data-below-origin="true">
+        <li><a href="#" class="center-align">{{current_user.email}}</a></li>
+        <li class="divider"></li>
+         <li><a href="{{ url_for('updateemail')}}" class="center-align">Update Email</a></li>
+          <li class="divider"></li>
+          <li><a href="{{ url_for('updatepass')}}" class="center-align">Update Password</a></li>
+          <li class="divider"></li>
+        <li><a href="{{ url_for('logout')}}" class="center-align">Logout</a></li>
+      </ul>
+      <!--ul class="right hide-on-med-and-down">
         <li><a href="{{url_for('monthNew')}}"><i class="material-icons right">bookmark</i>New Month Here</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href="{{url_for('monthNew')}}"><i class="material-icons right">bookmark</i>New Month Here</a></li>
-      </ul>
+      </ul-->
     </div>
   </nav>
+
+  <div class="center-align">
+    <a class='dropdown-button btn hide-on-med-and-up' href='#' id="drop" data-activates='dropdown1' data-constrainwidth="false" > {{ current_user.username }}</a>
+
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content' style="width: 300px; top: 20px; right: 0px;" data-item-alignment="right" data-constrain-width="true" data-below-origin="true">
+          <li><a href="#" class="center-align">{{current_user.email}}</a></li>
+          <li class="divider"></li>
+           <li><a href="{{ url_for('updateemail')}}" class="center-align">Update Email</a></li>
+          <li class="divider"></li>
+          <li><a href="{{ url_for('updatepass')}}" class="center-align">Update Password</a></li>
+          <li class="divider"></li>
+          <li><a href="{{ url_for('logout')}}" class="center-align">Logout</a></li>
+        </ul>
+    </div>
 
   <div class="carousel">
     <a class="carousel-item" href="#one!"><img src="http://www.bluemaize.net/im/wallets/wallet-money-4.jpg"></a>
     <a class="carousel-item" href="#two!"><img src="http://m3glam.com/wp-content/uploads/2016/01/money1.jpg"></a>
     <a class="carousel-item" href="#three!"><img src="http://blog.wallstreetsurvivor.com/wp-content/uploads/photodune-12852046-manage-your-money-xs.jpg"></a>
     <a class="carousel-item" href="#four!"><img src="http://globalaccessibilitymap.com/wp-content/uploads/2014/11/How-You-Manage-Money-More-Efficiently.jpg"></a>
+    <a class="carousel-item" href="#four!"><img src="http://www.all-debt-consolidation.org/file/2016/01/all-debt-consolidation-1-1000x661.jpg"></a>
   </div>
 
+<div class="center-align">
+<a href="{{url_for('monthNew')}}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a> <span id="entry" class="hide-on-med-and-down">Add New Month</span>
+</div>
+
 <h2 class="center-align"> Click a month for its details </h2>
+
+{% if error %}
+        <div class="card-panel center-align error">
+          <span class="red-text text-ligthen-2">{{error}}</span>
+        </div>
+      {% endif %}
 
 {% for i in months %}
 
