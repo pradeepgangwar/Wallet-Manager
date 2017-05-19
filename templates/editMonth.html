@@ -46,7 +46,55 @@
 
 <h2 class="center-align"> Edit your {{i.name}} {{i.year}} Details Here </h2>
 
-<img src="{{ url_for('static', filename='img/cons.jpg')}}"" height="300px" width="300px" class="cons">
+<div class="row">
+  <form action="{{url_for('monthEdit', month_id = month_id)}}" method="POST">
+
+
+<div class="row">
+        <div class="input-field col s6">
+        <i class="material-icons prefix">date_range</i>
+        <select name = "name" required>
+          <option value="January" selected>January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="March">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+        <label>Month</label>
+      </div>
+        <div class="input-field col s6">
+        <i class="material-icons prefix">date_range</i>
+        <select name = "year" required>
+          <option value="2012">2012</option>
+          <option value="2013">2013</option>
+          <option value="2014">2014</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+          <option value="2017" selected>2017</option>
+        </select>
+        <label>Year</label>
+      </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_balance_wallet</i>
+          <input value='{{i.open_bal}}' id="first_name2" type="text" class="validate" name="balance">
+          <label class="active" for="first_name2">Opening Balance</label>
+          <!--input id="icon_telephone" type="number" class="validate" name="balance" required>
+          <label for="icon_telephone">Opening balance</label-->
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="submit" id="create">Submit
+        <i class="material-icons right">send</i>
+      </button>
+      </div>
+        
+    </form>
+ </div>
 
 <div class="row">
   <form action="{{url_for('wallet')}}">

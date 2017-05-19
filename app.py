@@ -151,11 +151,25 @@ def monthDelete(month_id):
 @login_required
 def monthEdit(month_id):
     editMonth = session.query(Month).filter_by(id = month_id).first()
-    if (editMonth == None):
-            return render_template('unexist.html')
-    if (editMonth.user_id != current_user.id):
-        return render_template('unauthorize.html')
-    return render_template('editMonth.html', month_id = month_id, i= editMonth)
+    getTransaction = session.query(Transactions).filter_by(month_id = month_id).all()
+    if request.method == 'POST':
+        newbal = request.form['balance']
+        editMonth.open_bal = int(newbal)
+        editMonth.curr_bal = int(newbal)
+        for i in getTransaction:
+            if i.name == 'Debit':
+                editMonth.curr_bal -= int(i.cost)
+            else:
+                editMonth.curr_bal += int(i.cost)
+        session.add(editMonth)
+        session.commit()
+        return redirect(url_for('home'))
+    else:
+        if (editMonth == None):
+                return render_template('unexist.html')
+        if (editMonth.user_id != current_user.id):
+            return render_template('unauthorize.html')
+        return render_template('editMonth.html', month_id = month_id, i= editMonth)
 
 
 #see all transactions of a month
