@@ -14,8 +14,11 @@
     <div class="nav-wrapper">
       <a href="{{url_for('wallet')}}" class="brand-logo" id="nav_div">My Wallet<i class="material-icons">shopping_cart</i></a>
       <!-- Modal Trigger -->
-      <a class="modal-trigger waves-effect waves-light btn hide-on-med-and-down" href="#modal1" id="login_button">Login/Signup</a>
+      <a class="modal-trigger waves-effect waves-light btn hide-on-med-and-down" href="{{url_for('signup')}}" id="login_button">Signup</a>
 </nav>
+
+  <a class="modal-trigger waves-effect waves-light btn hide-on-large-only" href="{{url_for('signup')}}" id="login_button2">Signup</a>
+
       
        {% if error %}
         <div class="card-panel center-align error">
