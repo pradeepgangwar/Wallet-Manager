@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify,g
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from flask_sqlalchemy import SQLAlchemy
@@ -6,9 +6,12 @@ from database_setup import Base, User, Month, Transactions
 from flask_bcrypt import Bcrypt
 from sqlalchemy.sql import exists
 from forms import SignupForm, LoginForm
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 engine = create_engine('sqlite:///mywallet.db')
 
